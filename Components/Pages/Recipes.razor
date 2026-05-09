@@ -1,14 +1,15 @@
 @page "/recipes"
 
-<PageTitle>Recipes | Maasi</PageTitle>
+<PageTitle>Recipes | Maasil</PageTitle>
 
 <section class="recipes-hero" aria-labelledby="recipes-heading">
     <div class="recipes-hero-copy">
         <p class="eyebrow">Recipes</p>
         <h1 id="recipes-heading">Food I want to make again</h1>
         <p>
-            A starter collection of simple meals with ingredients, timing, and step-by-step notes.
-            This page can grow into your own cookbook as you add favorites.
+            A personal recipe journal where I recreate Kashmiri dishes from home, explore local and exotic recipes,
+            and experiment with fusion cuisine by mixing different ingredients, flavors, and cooking techniques.
+            This collection will grow as I keep trying new meals, refining old favorites, and building my own style of cooking.
         </p>
     </div>
 </section>
@@ -22,7 +23,7 @@
                     <p class="recipe-category">@recipe.Category</p>
                     <h2>@recipe.Name</h2>
                 </div>
-                <span class="difficulty">@recipe.Difficulty</span>
+                <span class="rating">@recipe.Rating</span>
             </header>
 
             <p class="description">@recipe.Description</p>
@@ -62,6 +63,16 @@
                     </ol>
                 </section>
             </div>
+
+            <section class="recipe-notes" aria-label="@($"{recipe.Name} notes")">
+                <h3>Notes</h3>
+                <ul>
+                    @foreach (var note in recipe.Notes)
+                    {
+                        <li>@note</li>
+                    }
+                </ul>
+            </section>
         </article>
     }
 </section>
@@ -70,76 +81,531 @@
     private static readonly Recipe[] RecipeItems =
     {
         new Recipe(
-            "Creamy Garlic Pasta",
-            "Weeknight comfort",
-            "25 minutes",
-            "2",
-            "Easy",
-            "#2bb3a3",
-            "A quick pasta with garlic, parmesan, and a silky sauce made from pasta water.",
-            new[]
-            {
-                "8 oz pasta",
-                "3 garlic cloves, minced",
-                "2 tbsp butter",
-                "1/2 cup grated parmesan",
-                "1/2 cup reserved pasta water",
-                "Black pepper and parsley"
-            },
-            new[]
-            {
-                "Boil the pasta in salted water until al dente, then reserve pasta water before draining.",
-                "Melt butter in a pan and cook the garlic for about one minute.",
-                "Add pasta, parmesan, and splashes of pasta water until the sauce turns glossy.",
-                "Finish with black pepper, parsley, and more parmesan."
-            }),
-        new Recipe(
-            "Lemon Herb Chicken Bowls",
-            "Fresh dinner",
-            "35 minutes",
+            "Dry-Rub Chicken Drumsticks",
+            "Chicken",
+            "55 minutes",
             "3",
-            "Medium",
-            "#57b6a8",
-            "Bright chicken with rice, cucumber, greens, and a simple yogurt sauce.",
+            "5/5",
+            "#2bb3a3",
+            "Oven-baked chicken drumsticks coated in a Kashmiri-style dry spice rub with chili, fennel, ginger, garlic, cinnamon, and cardamom. Best served with plain yogurt as a cooling dip.",
             new[]
             {
-                "1 lb chicken breast or thighs",
-                "1 lemon, juiced",
-                "1 tsp dried oregano",
-                "2 cups cooked rice",
-                "1 cucumber, chopped",
-                "1/2 cup plain yogurt"
+                "8 chicken drumsticks, skin on",
+                "3 tbsp olive oil",
+                "1/2 tsp salt",
+                "2 tsp Kashmiri chili powder",
+                "1/2 tsp Indian chili powder",
+                "1 tsp fennel powder",
+                "1/2 tsp ginger powder",
+                "1/4 tsp garlic powder",
+                "1/4 tsp black pepper",
+                "1/2 tsp cinnamon powder",
+                "1/4 tsp cardamom powder"
             },
             new[]
             {
-                "Season chicken with lemon juice, oregano, salt, and pepper.",
-                "Cook in a skillet until browned and cooked through.",
-                "Stir yogurt with lemon juice, salt, pepper, and chopped herbs.",
-                "Build bowls with rice, chicken, cucumber, greens, and sauce."
+                "Pat the drumsticks dry with paper towels.",
+                "Make shallow slashes in the drumsticks so the spices can coat them better.",
+                "Add the drumsticks and olive oil to a large bowl.",
+                "Mix all the spices separately to make the dry rub.",
+                "Add the spice mix to the chicken and rub it evenly over each drumstick.",
+                "Preheat the oven to 400 F.",
+                "Place the drumsticks on a baking tray or rack.",
+                "Bake for about 45 minutes, or until cooked through and lightly browned.",
+                "Let the drumsticks rest for 5 minutes before serving."
+            },
+            new[]
+            {
+                "Plain yogurt works well as a dip.",
+                "Since this is a dry rub, the spices can be increased slightly, except for the salt."
             }),
         new Recipe(
-            "Cinnamon French Toast",
-            "Weekend breakfast",
-            "20 minutes",
-            "2",
-            "Easy",
-            "#86d8d0",
-            "Golden slices with cinnamon, vanilla, and crisp edges.",
+            "Chicken with Onion",
+            "Chicken",
+            "45 minutes",
+            "3",
+            "5/5",
+            "#57b6a8",
+            "A simple Kashmiri-style chicken dish cooked with lots of onion, fennel, chili, turmeric, ginger, garlic, and cardamom. The onions slowly soften into a flavorful base for the chicken.",
             new[]
             {
-                "4 thick slices of bread",
-                "2 eggs",
-                "1/2 cup milk",
-                "1 tsp vanilla",
-                "1 tsp cinnamon",
-                "Maple syrup and berries"
+                "1 lb chicken breast",
+                "1 lb yellow onion, chopped",
+                "3 tbsp canola oil",
+                "2 garlic cloves",
+                "1/4 tsp ginger powder",
+                "1/2 tsp fennel powder",
+                "1/3 tsp Indian chili powder",
+                "3/4 tsp Kashmiri chili powder",
+                "1/4 tsp cardamom powder",
+                "1/4 tsp turmeric powder",
+                "Salt, to taste",
+                "200-240 ml water"
             },
             new[]
             {
-                "Whisk eggs, milk, vanilla, cinnamon, and a pinch of salt.",
-                "Dip each bread slice so both sides soak up the custard.",
-                "Cook on a buttered skillet until each side is golden.",
-                "Serve warm with syrup, berries, or powdered sugar."
+                "Heat the oil in a pan over medium-high heat.",
+                "Fry the chicken breast for about 4 minutes on each side, then remove it from the pan.",
+                "Add the chopped onions to the same oil.",
+                "Add about half of the spice mix, except the salt, along with a tiny splash of water.",
+                "Fry the onions until they turn light to medium brown.",
+                "Add the chicken back to the pan, season with salt, and fry for another 5 minutes.",
+                "Transfer everything to a pot.",
+                "Add 200-240 ml water and the remaining spice mix. Stir well.",
+                "Bring to a boil, then reduce the heat and simmer for about 30 minutes.",
+                "For the last 5-10 minutes, remove the lid to let some water evaporate and thicken the curry."
+            },
+            new[]
+            {
+                "Works well with rice, chapati, or tortillas.",
+                "You can adjust the water depending on how thick you want the gravy."
+            }),
+        new Recipe(
+            "Chicken with Spinach",
+            "Chicken",
+            "1 hour 15 minutes",
+            "2",
+            "5/5",
+            "#86d8d0",
+            "A comforting chicken and spinach curry inspired by home-style Kashmiri cooking. The spinach is cooked down until soft, then simmered with chicken and warm spices.",
+            new[]
+            {
+                "250 g spinach",
+                "250 g boneless chicken",
+                "Mustard oil, as needed",
+                "3/4 tsp Kashmiri chili powder",
+                "1/2 tsp Indian chili powder",
+                "1/2 tsp fennel powder",
+                "1/2 tsp turmeric powder",
+                "1/4 tsp ginger powder",
+                "1/8 tsp clove powder or 1/2 tsp garam masala",
+                "1/2 tsp garlic powder",
+                "3/4 tsp salt",
+                "240 ml water"
+            },
+            new[]
+            {
+                "Boil the spinach for about 10 minutes, then drain it.",
+                "Heat mustard oil in a pan until it starts sizzling.",
+                "Add the chicken and fry until lightly golden.",
+                "Remove the chicken from the pan.",
+                "Add the drained spinach to the same pan.",
+                "Fry the spinach thoroughly until it breaks down and becomes soft, about 10-15 minutes.",
+                "Add salt to the spinach.",
+                "Add the chicken back to the pan along with the remaining spice mix.",
+                "Fry everything together for a few more minutes.",
+                "Transfer to a pot, add 240 ml water, and bring to a boil.",
+                "Lower the heat and simmer for about 30 minutes."
+            },
+            new[]
+            {
+                "Best eaten with rice, chapati, flour tortillas, or fajitas.",
+                "Bone-in chicken can also be used.",
+                "A 1:1 ratio of chicken to spinach works well.",
+                "Adjust water and spices depending on the amount of chicken and spinach."
+            }),
+        new Recipe(
+            "Marinated Chicken Drumsticks",
+            "Chicken",
+            "4 hours 45 minutes",
+            "3",
+            "4/5",
+            "#2bb3a3",
+            "Chicken drumsticks marinated in yogurt, lime, olive oil, and spices, then baked until tender and flavorful. The cuts in the chicken help the marinade soak in properly.",
+            new[]
+            {
+                "8 chicken drumsticks",
+                "Juice of 1/2 lime",
+                "125 ml plain yogurt",
+                "2 tbsp olive oil",
+                "2 1/4 tsp Indian chili powder",
+                "1 tsp fennel powder",
+                "1/2 tsp ginger powder",
+                "1/2 tsp garlic powder",
+                "1/2 tsp garam masala",
+                "1 tsp salt",
+                "1/2 tsp turmeric powder"
+            },
+            new[]
+            {
+                "Remove the skin from the drumsticks.",
+                "Mix the spices together in a bowl.",
+                "Add the yogurt, olive oil, and lime juice to the spice mix.",
+                "Whisk until the marinade is smooth and evenly combined.",
+                "Pat the drumsticks dry and make deep cuts in them.",
+                "Add the drumsticks to the marinade and coat them thoroughly, making sure the marinade gets into the cuts.",
+                "Refrigerate for 4-12 hours.",
+                "Preheat the oven to 400 F.",
+                "Place the drumsticks on a baking tray, keeping them slightly apart.",
+                "Bake for 40-45 minutes.",
+                "Let them rest for 5 minutes before serving."
+            },
+            new[]
+            {
+                "Good with yogurt or hot sauce.",
+                "A longer marinade time gives better flavor."
+            }),
+        new Recipe(
+            "Marinated Chicken Leg Quarters",
+            "Chicken",
+            "4 hours 45 minutes",
+            "3",
+            "5/5",
+            "#57b6a8",
+            "Large chicken leg quarters marinated in yogurt, lime, spices, and Worcestershire sauce, then baked until juicy and browned. This is a stronger, richer version of the marinated drumstick recipe.",
+            new[]
+            {
+                "2 large chicken leg quarters",
+                "Juice of 1/2 lime",
+                "125 ml plain yogurt",
+                "2 tbsp olive oil",
+                "2 1/4 tsp Kashmiri chili powder",
+                "1 1/2 tsp fennel powder",
+                "1/2 tsp ginger powder",
+                "1/2 tsp garlic powder",
+                "1/2 tsp garam masala",
+                "1/2 tsp salt",
+                "1/2 tsp turmeric powder",
+                "1 tbsp Worcestershire sauce"
+            },
+            new[]
+            {
+                "Divide the chicken leg quarters into smaller pieces.",
+                "Remove the skin, or partially remove it if you want some crispy skin.",
+                "Add the yogurt, lime juice, olive oil, Worcestershire sauce, and spices to a bowl.",
+                "Mix everything together to make the marinade.",
+                "Add the chicken and coat it thoroughly.",
+                "Refrigerate for at least 4 hours.",
+                "Preheat the oven to 400 F.",
+                "Bake for 40-45 minutes, or until the chicken is cooked through.",
+                "Let it rest for a few minutes before serving."
+            },
+            new[]
+            {
+                "Serve with plain yogurt.",
+                "Keeping some skin on can improve texture."
+            }),
+        new Recipe(
+            "Tomato Chicken",
+            "Chicken",
+            "1 hour 20 minutes",
+            "2-3",
+            "5/5",
+            "#86d8d0",
+            "A home-style tomato chicken curry made with chicken thighs, onion, garlic, and tomatoes simmered into a rich spiced gravy. Best served with rice.",
+            new[]
+            {
+                "1 lb chicken thighs",
+                "1 lb tomatoes, diced",
+                "1/2 medium yellow onion, chopped",
+                "3 garlic cloves",
+                "3 tbsp canola oil",
+                "1 1/2 tsp Kashmiri chili powder",
+                "1/2 tsp Indian chili powder",
+                "3/4 tsp fennel powder",
+                "1/2 tsp ginger powder",
+                "1 tsp salt",
+                "1/2 tsp turmeric powder",
+                "1/2 tsp garam masala"
+            },
+            new[]
+            {
+                "Chop the onion.",
+                "Dice the tomatoes and garlic.",
+                "Heat the canola oil over medium-high heat.",
+                "Add the chopped onion and fry until lightly golden.",
+                "Add the chicken thighs and sear for about 3 minutes on each side.",
+                "Mix the spices together in a small bowl.",
+                "Remove the chicken from the pan.",
+                "Add the tomatoes and half of the spice mix.",
+                "Fry until the tomatoes start to break down.",
+                "Add the chicken back to the pot along with the remaining spice mix.",
+                "Cover and simmer on low heat for about 50 minutes.",
+                "For the last 15 minutes, remove the lid to thicken the gravy.",
+                "Stir occasionally while cooking."
+            },
+            new[]
+            {
+                "Best eaten with rice.",
+                "The gravy should become thick and tomato-rich by the end."
+            }),
+        new Recipe(
+            "Ground Lamb with Tomato Curry",
+            "Lamb",
+            "1 hour 5 minutes",
+            "3",
+            "5/5",
+            "#2bb3a3",
+            "Ground lamb cooked with tomatoes, onion, garlic, bell pepper, and Kashmiri-style spices. The tomatoes cook down into a thick curry base that pairs well with rice or flatbread.",
+            new[]
+            {
+                "1 lb ground lamb",
+                "3 tomatoes, about 400-450 g, diced",
+                "1 bell pepper, chopped",
+                "1/2 yellow onion, chopped",
+                "2 garlic cloves",
+                "3 tbsp canola oil",
+                "3/4 tsp Kashmiri chili powder",
+                "1/2 tsp Indian chili powder",
+                "3/4 tsp fennel powder",
+                "1/3 tsp ginger powder",
+                "1/2 tsp garam masala",
+                "1/2 tsp garlic powder",
+                "1/2 tsp salt"
+            },
+            new[]
+            {
+                "Heat the oil over medium-high heat.",
+                "Fry the onion and garlic until browned.",
+                "Add the ground lamb and fry until lightly browned.",
+                "Add the diced tomatoes and about three-quarters of the spice mix.",
+                "Add the bell pepper and continue frying until the tomatoes dissolve into a paste.",
+                "Move the mixture to a pot and bring it to a boil.",
+                "Lower the heat, cover, and simmer for 30 minutes.",
+                "For the last 15 minutes, remove the lid and let extra water evaporate."
+            },
+            new[]
+            {
+                "Works well with rice, chapati, tortillas, or flatbread.",
+                "Letting the tomatoes fully break down gives the best texture."
+            }),
+        new Recipe(
+            "Lamb Flatbread",
+            "Lamb",
+            "30 minutes",
+            "1",
+            "5/5",
+            "#57b6a8",
+            "A quick lamb flatbread made by pressing spiced ground lamb onto tortillas and pan-frying until crisp and browned. Simple, fast, and great with yogurt or hot sauce.",
+            new[]
+            {
+                "1/3 lb ground lamb",
+                "3 small tortillas",
+                "1 tomato, diced",
+                "1 tbsp canola oil",
+                "1/4 tsp Indian chili powder",
+                "1/4 tsp fennel powder",
+                "1/8 tsp ginger powder",
+                "1/8 tsp garlic powder",
+                "1/8 tsp garam masala",
+                "1/4 tsp salt"
+            },
+            new[]
+            {
+                "Add the spice mix to the ground lamb and mix until evenly combined.",
+                "Scoop the lamb onto each tortilla and spread it into a thin layer.",
+                "Dice the tomato and press small pieces into the lamb layer.",
+                "Heat canola oil in a pan over medium heat.",
+                "Place the tortilla lamb-side down and fry for about 3 minutes, pressing gently.",
+                "Flip and fry the tortilla side for about 30 seconds.",
+                "Let it cool slightly before eating."
+            },
+            new[]
+            {
+                "Plain yogurt can be added as a spread after cooking.",
+                "Tabasco or hot sauce also works well."
+            }),
+        new Recipe(
+            "Lamb Meatballs with Tomato",
+            "Lamb",
+            "1 hour 20 minutes",
+            "3",
+            "5/5",
+            "#86d8d0",
+            "Tender lamb meatballs simmered in a tomato and bell pepper curry. This is a home-style dish with a rich sauce and classic Kashmiri spice profile.",
+            new[]
+            {
+                "450 g ground lamb",
+                "3 medium tomatoes, finely chopped",
+                "1/2 medium yellow onion, chopped",
+                "2 garlic cloves, chopped",
+                "1 green bell pepper, finely chopped",
+                "3 tbsp mustard oil",
+                "1/4 tsp ginger powder",
+                "1/4 tsp garlic powder",
+                "1/2 tsp fennel powder",
+                "1/2 tsp turmeric powder",
+                "3/4 tsp Kashmiri chili powder",
+                "1/2 tsp garam masala",
+                "3/4 tsp salt"
+            },
+            new[]
+            {
+                "Roll the ground lamb into small meatballs. For 450 g lamb, you should get around 16-17 meatballs.",
+                "Chop the onion and garlic.",
+                "Heat mustard oil in a pan until slightly sizzling.",
+                "Add the onion and garlic and fry until golden.",
+                "Add the meatballs and fry on both sides until they change from pink to grey and become firm, about 5-6 minutes per side.",
+                "Finely chop the tomatoes and bell pepper, then add them to the pan.",
+                "Add half of the spice mix and stir everything together.",
+                "Fry for 5-10 minutes, then remove the meatballs.",
+                "Continue frying the tomatoes and bell pepper until the tomatoes dissolve.",
+                "Transfer everything to a pot.",
+                "Add the meatballs back in, along with the remaining spices.",
+                "Make sure the tomato mixture covers the meatballs. Add a small amount of water if needed.",
+                "Bring to a boil.",
+                "Cover, lower the heat, and simmer for 45 minutes."
+            },
+            new[]
+            {
+                "Best served with rice.",
+                "Be gentle while stirring so the meatballs do not break."
+            }),
+        new Recipe(
+            "Potato Lamb Curry",
+            "Lamb",
+            "1 hour 30 minutes",
+            "3",
+            "5/5",
+            "#2bb3a3",
+            "A lamb and potato curry made with rib-cut lamb breast, tomatoes, onion, garlic, and Kashmiri spices. The lamb is simmered first, then potatoes are added so they become tender without falling apart.",
+            new[]
+            {
+                "1 lb split lamb breast plate",
+                "14 bite-sized yellow potatoes, halved",
+                "2 tomatoes, chopped",
+                "2 garlic cloves, chopped",
+                "1/2 large onion, chopped",
+                "3 tbsp canola oil",
+                "1 1/2 tsp Kashmiri chili powder",
+                "1/2 tsp turmeric powder",
+                "3/4 tsp fennel powder",
+                "3/4 tsp salt",
+                "1/2 tsp garam masala",
+                "2/3 tsp ginger powder",
+                "About 125 ml water, plus more if needed"
+            },
+            new[]
+            {
+                "Cut the lamb breast plate into vertical rib pieces.",
+                "Chop the onion, tomatoes, and garlic.",
+                "Mix the spices together.",
+                "Heat the oil in a pan over medium-high heat.",
+                "Fry the lamb ribs until browned, about 5 minutes.",
+                "Remove the lamb from the pan.",
+                "Add the onion, tomatoes, garlic, and spice mix to the same pan.",
+                "Fry until the tomatoes start breaking down.",
+                "Add the lamb back and fry for another 5 minutes.",
+                "Add about 125 ml water, or enough so the lamb is nearly submerged.",
+                "Cover and simmer on low-medium heat for 30 minutes.",
+                "Cut the small potatoes in half and add them to the curry.",
+                "Lower the heat and simmer for another 30 minutes with the lid closed.",
+                "Add a little more water only if needed."
+            },
+            new[]
+            {
+                "The lamb may need more simmering time if it is still chewy.",
+                "Serve with rice.",
+                "Roma tomatoes were used, but other tomatoes should also work."
+            }),
+        new Recipe(
+            "Tomato Curry",
+            "Vegetarian",
+            "50 minutes",
+            "2",
+            "5/5",
+            "#57b6a8",
+            "A simple tomato curry made with onions, fennel, Kashmiri chili, turmeric, garlic, and garam masala. A good vegetarian base curry that works well with rice or flatbread.",
+            new[]
+            {
+                "3-4 tomatoes on the vine, diced",
+                "1/2 yellow onion, chopped",
+                "2 tbsp canola oil",
+                "1/2 tsp fennel powder",
+                "3/4 tsp Kashmiri chili powder",
+                "1/3 tsp turmeric powder",
+                "1/2 tsp garam masala",
+                "1/2 tsp garlic powder",
+                "1/2 tsp salt",
+                "60-80 ml water"
+            },
+            new[]
+            {
+                "Finely chop the onion.",
+                "Dice the tomatoes.",
+                "Heat the oil in a pan over medium-high heat.",
+                "Add the onions and fry until golden brown.",
+                "Add the tomatoes and continue frying until they break down.",
+                "Reduce the heat.",
+                "Add 60-80 ml water and the spice mix.",
+                "Stir thoroughly.",
+                "Cover and cook on low heat for about 30 minutes."
+            },
+            new[]
+            {
+                "Beefsteak tomatoes can be used.",
+                "Avoid Roma tomatoes if possible.",
+                "Mustard oil can be used instead of canola oil."
+            }),
+        new Recipe(
+            "Pan-Seared Tilapia with Garlic Butter and Lime",
+            "Fish",
+            "20 minutes",
+            "1",
+            "4/5",
+            "#86d8d0",
+            "A quick pan-seared tilapia recipe finished with garlic butter and lime. Light, fast, and good when you want something simple but flavorful.",
+            new[]
+            {
+                "2 tilapia fillets",
+                "Salt, to taste",
+                "Black pepper, to taste",
+                "2 tbsp olive oil",
+                "2 tbsp butter",
+                "2 garlic cloves, minced",
+                "Juice of 1 lime",
+                "Parsley, optional"
+            },
+            new[]
+            {
+                "Rinse the tilapia fillets and pat them completely dry with paper towels.",
+                "Season both sides generously with salt and black pepper.",
+                "Heat olive oil in a non-stick skillet over medium-high heat.",
+                "Once the oil is shimmering, add the fillets.",
+                "Cook for 3-4 minutes per side, until a golden crust forms.",
+                "Reduce the heat to medium-low.",
+                "Add butter and minced garlic to the pan.",
+                "Saute for about 1 minute, being careful not to burn the garlic.",
+                "Add the lime juice.",
+                "Spoon the garlic butter and lime sauce over the fish for about 30 seconds.",
+                "Remove from heat and garnish with parsley if desired."
+            },
+            new[]
+            {
+                "Do not overcook the tilapia; it cooks quickly.",
+                "Patting the fish dry helps it sear better."
+            }),
+        new Recipe(
+            "Spiced Tilapia Fillets",
+            "Fish",
+            "22 minutes",
+            "1",
+            "3/5",
+            "#2bb3a3",
+            "Tilapia fillets rubbed with fennel, Kashmiri chili, cinnamon, salt, and black pepper, then quickly pan-fried. A simple spiced fish recipe with a Kashmiri-inspired flavor profile.",
+            new[]
+            {
+                "2 thawed tilapia fillets",
+                "2 tbsp canola oil",
+                "1/2 tsp fennel powder",
+                "1/2 tsp Kashmiri chili powder",
+                "1/2 tsp salt",
+                "1/3 tsp cinnamon powder",
+                "1/4 tsp black pepper"
+            },
+            new[]
+            {
+                "Mix the spices together.",
+                "Pat the tilapia fillets dry with paper towels.",
+                "Rub the spice mix onto both sides of the fillets, pressing gently so it sticks.",
+                "Heat canola oil in a pan over medium-high heat.",
+                "Add the fillets and fry for about 3 minutes on each side.",
+                "Remove from the pan and serve immediately."
+            },
+            new[]
+            {
+                "This is a quick recipe, so keep an eye on the fish.",
+                "The spice rub can be adjusted based on how strong you want the flavor."
             })
     };
 
@@ -148,9 +614,10 @@
         string Category,
         string Time,
         string Servings,
-        string Difficulty,
+        string Rating,
         string Accent,
         string Description,
         string[] Ingredients,
-        string[] Steps);
+        string[] Steps,
+        string[] Notes);
 }

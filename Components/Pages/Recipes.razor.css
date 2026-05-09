@@ -85,7 +85,7 @@
     font-size: 1.6rem;
 }
 
-.difficulty {
+.rating {
     min-width: 5rem;
     padding: 0.45rem 0.7rem;
     border-radius: 8px;
@@ -190,6 +190,40 @@
     background: color-mix(in srgb, var(--accent), white 78%);
     color: #20242d;
     font-weight: 900;
+}
+
+.recipe-notes {
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(43, 179, 163, 0.16);
+}
+
+.recipe-notes h3 {
+    margin: 0 0 0.65rem;
+    color: #f3fffd;
+    font-size: 1rem;
+}
+
+.recipe-notes ul {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+    list-style: none;
+}
+
+.recipe-notes li {
+    position: relative;
+    padding-left: 1rem;
+    color: #c9c0b4;
+    line-height: 1.6;
+}
+
+.recipe-notes li::before {
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    content: "•";
 }
 
 @media (max-width: 860px) {
