@@ -1,0 +1,75 @@
+.site-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #06080c;
+    color: #eefaf8;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(6, 8, 12, 0.9);
+    border-bottom: 1px solid rgba(43, 179, 163, 0.2);
+    backdrop-filter: blur(16px);
+}
+
+.site-main {
+    flex: 1;
+}
+
+.site-footer {
+    border-top: 1px solid rgba(43, 179, 163, 0.2);
+    background: #080b11;
+}
+
+.footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: #b7b0a5;
+    font-size: 0.95rem;
+}
+
+.footer-inner ::deep a {
+    color: #73e2d7;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.footer-inner ::deep a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+#blazor-error-ui {
+    color-scheme: light only;
+    background: #fff4c2;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}

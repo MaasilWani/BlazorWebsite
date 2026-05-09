@@ -1,0 +1,139 @@
+.site-nav {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0.9rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.brand {
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #eefaf8;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.brand-mark {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 8px;
+    background: #1f8a83;
+    color: #eefaf8;
+    box-shadow: 0 10px 24px rgba(31, 138, 131, 0.28);
+}
+
+.nav-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-toggle-button {
+    display: none;
+    flex: 0 0 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: auto;
+    border: 1px solid rgba(43, 179, 163, 0.26);
+    border-radius: 8px;
+    background: #10141b;
+    cursor: pointer;
+    place-items: center;
+}
+
+.nav-toggle-button span,
+.nav-toggle-button span::before,
+.nav-toggle-button span::after {
+    display: block;
+    width: 1.15rem;
+    height: 2px;
+    border-radius: 999px;
+    background: #eefaf8;
+    content: "";
+}
+
+.nav-toggle-button span {
+    position: relative;
+}
+
+.nav-toggle-button span::before,
+.nav-toggle-button span::after {
+    position: absolute;
+    left: 0;
+}
+
+.nav-toggle-button span::before {
+    top: -0.4rem;
+}
+
+.nav-toggle-button span::after {
+    top: 0.4rem;
+}
+
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.nav-links ::deep .nav-link {
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    color: #d3cbc0;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav-links ::deep .nav-link:hover,
+.nav-links ::deep .nav-link.active {
+    background: rgba(43, 179, 163, 0.18);
+    color: #73e2d7;
+}
+
+@media (max-width: 720px) {
+    .site-nav {
+        min-height: 4.25rem;
+    }
+
+    .nav-toggle-button {
+        display: grid;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% - 0.25rem);
+        left: 1rem;
+        right: 1rem;
+        margin-left: 0;
+        padding: 0.55rem;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        border: 1px solid rgba(43, 179, 163, 0.24);
+        border-radius: 8px;
+        background: #090d13;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
+    }
+
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    .nav-links ::deep .nav-link {
+        width: 100%;
+        justify-content: center;
+    }
+}

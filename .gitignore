@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+.aspnet-data-protection-keys/
+server.out.log
+server.err.log
+home-desktop.png
+home-mobile.png
+recipes-desktop.png

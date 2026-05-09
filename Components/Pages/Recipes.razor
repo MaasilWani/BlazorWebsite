@@ -1,0 +1,156 @@
+@page "/recipes"
+
+<PageTitle>Recipes | Maasi</PageTitle>
+
+<section class="recipes-hero" aria-labelledby="recipes-heading">
+    <div class="recipes-hero-copy">
+        <p class="eyebrow">Recipes</p>
+        <h1 id="recipes-heading">Food I want to make again</h1>
+        <p>
+            A starter collection of simple meals with ingredients, timing, and step-by-step notes.
+            This page can grow into your own cookbook as you add favorites.
+        </p>
+    </div>
+</section>
+
+<section class="recipe-list" aria-label="Recipe list">
+    @foreach (var recipe in RecipeItems)
+    {
+        <article class="recipe-card" style="--accent: @recipe.Accent">
+            <header class="recipe-card-header">
+                <div>
+                    <p class="recipe-category">@recipe.Category</p>
+                    <h2>@recipe.Name</h2>
+                </div>
+                <span class="difficulty">@recipe.Difficulty</span>
+            </header>
+
+            <p class="description">@recipe.Description</p>
+
+            <dl class="recipe-meta">
+                <div>
+                    <dt>Time</dt>
+                    <dd>@recipe.Time</dd>
+                </div>
+                <div>
+                    <dt>Serves</dt>
+                    <dd>@recipe.Servings</dd>
+                </div>
+            </dl>
+
+            <div class="recipe-columns">
+                <section aria-label="@($"{recipe.Name} ingredients")">
+                    <h3>Ingredients</h3>
+                    <ul class="ingredient-list">
+                        @foreach (var ingredient in recipe.Ingredients)
+                        {
+                            <li>@ingredient</li>
+                        }
+                    </ul>
+                </section>
+
+                <section aria-label="@($"{recipe.Name} steps")">
+                    <h3>Steps</h3>
+                    <ol class="step-list">
+                        @for (var i = 0; i < recipe.Steps.Length; i++)
+                        {
+                            <li>
+                                <span>@(i + 1)</span>
+                                @recipe.Steps[i]
+                            </li>
+                        }
+                    </ol>
+                </section>
+            </div>
+        </article>
+    }
+</section>
+
+@code {
+    private static readonly Recipe[] RecipeItems =
+    {
+        new Recipe(
+            "Creamy Garlic Pasta",
+            "Weeknight comfort",
+            "25 minutes",
+            "2",
+            "Easy",
+            "#2bb3a3",
+            "A quick pasta with garlic, parmesan, and a silky sauce made from pasta water.",
+            new[]
+            {
+                "8 oz pasta",
+                "3 garlic cloves, minced",
+                "2 tbsp butter",
+                "1/2 cup grated parmesan",
+                "1/2 cup reserved pasta water",
+                "Black pepper and parsley"
+            },
+            new[]
+            {
+                "Boil the pasta in salted water until al dente, then reserve pasta water before draining.",
+                "Melt butter in a pan and cook the garlic for about one minute.",
+                "Add pasta, parmesan, and splashes of pasta water until the sauce turns glossy.",
+                "Finish with black pepper, parsley, and more parmesan."
+            }),
+        new Recipe(
+            "Lemon Herb Chicken Bowls",
+            "Fresh dinner",
+            "35 minutes",
+            "3",
+            "Medium",
+            "#57b6a8",
+            "Bright chicken with rice, cucumber, greens, and a simple yogurt sauce.",
+            new[]
+            {
+                "1 lb chicken breast or thighs",
+                "1 lemon, juiced",
+                "1 tsp dried oregano",
+                "2 cups cooked rice",
+                "1 cucumber, chopped",
+                "1/2 cup plain yogurt"
+            },
+            new[]
+            {
+                "Season chicken with lemon juice, oregano, salt, and pepper.",
+                "Cook in a skillet until browned and cooked through.",
+                "Stir yogurt with lemon juice, salt, pepper, and chopped herbs.",
+                "Build bowls with rice, chicken, cucumber, greens, and sauce."
+            }),
+        new Recipe(
+            "Cinnamon French Toast",
+            "Weekend breakfast",
+            "20 minutes",
+            "2",
+            "Easy",
+            "#86d8d0",
+            "Golden slices with cinnamon, vanilla, and crisp edges.",
+            new[]
+            {
+                "4 thick slices of bread",
+                "2 eggs",
+                "1/2 cup milk",
+                "1 tsp vanilla",
+                "1 tsp cinnamon",
+                "Maple syrup and berries"
+            },
+            new[]
+            {
+                "Whisk eggs, milk, vanilla, cinnamon, and a pinch of salt.",
+                "Dip each bread slice so both sides soak up the custard.",
+                "Cook on a buttered skillet until each side is golden.",
+                "Serve warm with syrup, berries, or powdered sugar."
+            })
+    };
+
+    private sealed record Recipe(
+        string Name,
+        string Category,
+        string Time,
+        string Servings,
+        string Difficulty,
+        string Accent,
+        string Description,
+        string[] Ingredients,
+        string[] Steps);
+}
