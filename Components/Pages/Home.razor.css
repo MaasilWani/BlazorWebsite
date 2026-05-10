@@ -46,8 +46,7 @@
     text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
 }
 
-.hero-actions,
-.recipe-callout {
+.hero-actions {
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -173,9 +172,13 @@
     color: #73e2d7;
 }
 
-.recipe-callout {
-    justify-content: space-between;
+.recipe-callout,
+.books-callout {
+    display: block;
     border-top: 1px solid rgba(43, 179, 163, 0.2);
+}
+
+.recipe-callout {
     background-image:
         linear-gradient(90deg, rgba(6, 8, 12, 0.96), rgba(6, 8, 12, 0.84)),
         url("/images/recipe_page_witcher_style.png");
@@ -183,8 +186,22 @@
     background-size: cover;
 }
 
-.recipe-callout div {
+.books-callout {
+    background-image:
+        linear-gradient(90deg, rgba(6, 8, 12, 0.96), rgba(6, 8, 12, 0.84)),
+        url("/images/booksread_page.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.recipe-callout div,
+.books-callout div {
     max-width: 42rem;
+}
+
+.recipe-callout .action,
+.books-callout .action {
+    margin-top: 1rem;
 }
 
 @media (max-width: 860px) {

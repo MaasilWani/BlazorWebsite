@@ -1,0 +1,88 @@
+@page "/books"
+
+<PageTitle>Books | Maasil</PageTitle>
+
+<section class="books-hero" aria-labelledby="books-heading">
+    <div class="books-hero-copy">
+        <p class="eyebrow">Books</p>
+        <h1 id="books-heading">Books I have read</h1>
+        <p>
+            A year-by-year reading shelf with just the title and author, kept simple so the list can grow over time.
+        </p>
+    </div>
+</section>
+
+<section class="book-list" aria-label="Books read by year">
+    @if (BooksByYear.Any())
+    {
+        <nav class="year-selector" aria-label="Select reading year">
+            <span>Jump to year</span>
+            @foreach (var yearGroup in BooksByYear)
+            {
+                <a href="@($"/books#books-{yearGroup.Key}")">@yearGroup.Key</a>
+            }
+        </nav>
+    }
+
+    @if (!BooksByYear.Any())
+    {
+        <article class="empty-books">
+            <p class="eyebrow">Reading list</p>
+            <h2>Ready for your books</h2>
+            <p>Add entries to <code>BookItems</code> with a year, title, and author.</p>
+        </article>
+    }
+    else
+    {
+        @foreach (var yearGroup in BooksByYear)
+        {
+            <section id="@($"books-{yearGroup.Key}")" class="book-year" aria-labelledby="@($"books-heading-{yearGroup.Key}")">
+                <div class="year-heading">
+                    <p class="eyebrow">Read in</p>
+                    <h2 id="@($"books-heading-{yearGroup.Key}")">@yearGroup.Key</h2>
+                </div>
+
+                <div class="book-grid">
+                    @foreach (var book in yearGroup)
+                    {
+                        <article class="book-card">
+                            @if (book.IsCurrentlyReading)
+                            {
+                                <span class="book-status">Currently reading</span>
+                            }
+                            <h3>@book.Title</h3>
+                            <p>@book.Author</p>
+                        </article>
+                    }
+                </div>
+            </section>
+        }
+    }
+</section>
+
+@code {
+    private static readonly Book[] BookItems =
+    {
+        new(2026, "The Hod King", "Josiah Bancroft"),
+        new(2026, "Blood of Elves", "Andrzej Sapkowski"),
+        new(2026, "Time of Contempt", "Andrzej Sapkowski"),
+        new(2026, "Baptism of Fire", "Andrzej Sapkowski"),
+        new(2026, "The Tower of the Swallow", "Andrzej Sapkowski"),
+        new(2026, "The Lady of the Lake", "Andrzej Sapkowski"),
+        new(2026, "Season of Storms", "Andrzej Sapkowski"),
+        new(2026, "Butter", "Asako Yuzuki"),
+        new(2026, "Spinning Silver", "Naomi Novik"),
+        new(2026, "The Zig Zag Girl", "Elly Griffiths", true),
+        new(2025, "Senlin Ascends", "Josiah Bancroft"),
+        new(2025, "Arm of the Sphinx", "Josiah Bancroft"),
+        new(2025, "The Last Wish", "Andrzej Sapkowski"),
+        new(2025, "Sword of Destiny", "Andrzej Sapkowski")
+    };
+
+    private static IEnumerable<IGrouping<int, Book>> BooksByYear =>
+        BookItems
+            .GroupBy(book => book.Year)
+            .OrderByDescending(group => group.Key);
+
+    private sealed record Book(int Year, string Title, string Author, bool IsCurrentlyReading = false);
+}
