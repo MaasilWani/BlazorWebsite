@@ -6,7 +6,13 @@
     background-color: #10141b;
     background-image:
         linear-gradient(90deg, rgba(7, 10, 14, 0.84) 0%, rgba(7, 10, 14, 0.62) 44%, rgba(7, 10, 14, 0.18) 100%),
-        url("/images/mainpage_witcher_style.png");
+        url("/FullResPNG/mainpage_witcher_style.png");
+    background-image:
+        linear-gradient(90deg, rgba(7, 10, 14, 0.84) 0%, rgba(7, 10, 14, 0.62) 44%, rgba(7, 10, 14, 0.18) 100%),
+        image-set(
+            url("/images/mainpage_witcher_style.avif") type("image/avif"),
+            url("/FullResPNG/mainpage_witcher_style.png") type("image/png")
+        );
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -181,7 +187,13 @@
 .recipe-callout {
     background-image:
         linear-gradient(90deg, rgba(6, 8, 12, 0.96), rgba(6, 8, 12, 0.84)),
-        url("/images/recipe_page_witcher_style.png");
+        url("/FullResPNG/recipe_page_witcher_style.png");
+    background-image:
+        linear-gradient(90deg, rgba(6, 8, 12, 0.96), rgba(6, 8, 12, 0.84)),
+        image-set(
+            url("/images/recipe_page_witcher_style.avif") type("image/avif"),
+            url("/FullResPNG/recipe_page_witcher_style.png") type("image/png")
+        );
     background-position: center;
     background-size: cover;
 }
@@ -189,7 +201,13 @@
 .books-callout {
     background-image:
         linear-gradient(90deg, rgba(6, 8, 12, 0.96), rgba(6, 8, 12, 0.84)),
-        url("/images/booksread_page.png");
+        url("/FullResPNG/booksread_page.png");
+    background-image:
+        linear-gradient(90deg, rgba(6, 8, 12, 0.96), rgba(6, 8, 12, 0.84)),
+        image-set(
+            url("/images/booksread_page.avif") type("image/avif"),
+            url("/FullResPNG/booksread_page.png") type("image/png")
+        );
     background-position: center;
     background-size: cover;
 }
@@ -210,7 +228,13 @@
         align-items: flex-start;
         background-image:
             linear-gradient(180deg, rgba(7, 10, 14, 0.82) 0%, rgba(7, 10, 14, 0.62) 50%, rgba(7, 10, 14, 0.38) 100%),
-            url("/images/mainpage_witcher_style.png");
+            url("/FullResPNG/mainpage_witcher_style.png");
+        background-image:
+            linear-gradient(180deg, rgba(7, 10, 14, 0.82) 0%, rgba(7, 10, 14, 0.62) 50%, rgba(7, 10, 14, 0.38) 100%),
+            image-set(
+                url("/images/mainpage_witcher_style.avif") type("image/avif"),
+                url("/FullResPNG/mainpage_witcher_style.png") type("image/png")
+            );
         background-size: cover;
         background-position: 38% center;
     }
